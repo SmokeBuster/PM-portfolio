@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Stackd — Portfolio Case Study</title><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+:root{
+--bg:#0A0A0F;--surface:#111118;--card:#16161F;--border:#1E1E2E;
+--accent:#7C3AED;--accent-bright:#9D6FFF;--accent-glow:rgba(124,58,237,0.3);
+--teal:#2EC4B6;--green:#10B981;--orange:#F59E0B;--red:#EF4444;
+--text:#FFFFFF;--text-mid:#A0A0B8;--text-dim:#606078;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;}
+.container{max-width:1000px;margin:0 auto;padding:60px 24px;}
+/* HERO */
+.hero{padding:80px 0 60px;border-bottom:1px solid var(--border);margin-bottom:60px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);color:var(--accent-bright);padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:0.95;letter-spacing:-1px;margin-bottom:24px;}
+.hero-title span{color:var(--accent-bright);}
+.hero-sub{font-size:20px;color:var(--text-mid);font-weight:300;max-width:700px;margin-bottom:40px;line-height:1.6;}
+.hero-meta{display:flex;gap:40px;flex-wrap:wrap;}
+.meta-item{}
+.meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);font-weight:600;margin-bottom:4px;}
+.meta-val{font-size:14px;color:var(--text);font-weight:500;}
+/* SECTIONS */
+.section{margin-bottom:80px;}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-bright);font-weight:700;margin-bottom:12px;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;margin-bottom:24px;letter-spacing:0.5px;}
+.body-text{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;}
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:40px 0;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent-bright);line-height:1;margin-bottom:8px;}
+.stat-label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;}
+/* FEATURE CARDS */
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;}
+.feature-card:hover{border-color:rgba(124,58,237,0.4);}
+.feature-emoji{font-size:32px;margin-bottom:16px;}
+.feature-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.feature-desc{font-size:14px;color:var(--text-mid);line-height:1.7;}
+.feature-badge{display:inline-block;background:rgba(16,185,129,0.15);color:var(--green);border:1px solid rgba(16,185,129,0.3);padding:2px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-top:12px;}
+/* PROBLEM/SOLUTION */
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;}
+.ps-card{border-radius:16px;padding:28px;}
+.problem{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);}
+.solution{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);}
+.ps-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;}
+.problem .ps-title{color:var(--red);}
+.solution .ps-title{color:var(--accent-bright);}
+.ps-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:14px;color:var(--text-mid);}
+/* AI SECTION */
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+.ai-card{background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(46,196,182,0.05));border:1px solid rgba(124,58,237,0.2);border-radius:16px;padding:24px;}
+.ai-icon{font-size:24px;margin-bottom:12px;}
+.ai-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.ai-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+/* TECH STACK */
+.tech-row{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;}
+.tech-tag{background:var(--card);border:1px solid var(--border);color:var(--text-mid);padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;}
+.tech-tag.highlight{background:rgba(124,58,237,0.15);border-color:rgba(124,58,237,0.3);color:var(--accent-bright);}
+/* INSIGHT BLOCK */
+.insight{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:0 16px 16px 0;padding:24px 28px;margin:32px 0;}
+.insight-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-bright);margin-bottom:8px;}
+.insight p{font-size:15px;color:var(--text-mid);line-height:1.8;margin:0;}
+.insight strong{color:var(--text);}
+/* QUOTE */
+.quote{background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(46,196,182,0.05));border:1px solid rgba(124,58,237,0.2);border-radius:20px;padding:40px;margin:40px 0;text-align:center;}
+.quote-text{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--text);line-height:1.3;margin-bottom:16px;letter-spacing:0.5px;}
+.quote-sub{font-size:14px;color:var(--text-mid);}
+/* OUTCOMES */
+.outcome-list{margin:24px 0;}
+.outcome-item{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);}
+.outcome-item:last-child{border-bottom:none;}
+.outcome-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent-bright);width:48px;flex-shrink:0;line-height:1;}
+.outcome-content{}
+.outcome-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.outcome-desc{font-size:14px;color:var(--text-mid);}
+/* LINKS */
+.link-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;}
+.link-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;}
+.link-primary{background:var(--accent);color:white;}
+.link-secondary{background:var(--card);border:1px solid var(--border);color:var(--text-mid);}
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding-top:40px;margin-top:80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;}
+.footer-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text-dim);}
+.footer-links{display:flex;gap:24px;}
+.footer-link{font-size:13px;color:var(--text-dim);text-decoration:none;}
+</style></head><body><div class="container">
+
+<div class="hero">
+<div class="hero-tag"><span class="live-dot"></span>Live Product · Chrome Web Store</div>
+<div class="hero-title">Stack<span>d</span></div>
+<div class="hero-sub">AI-powered Chrome extension that autonomously finds, verifies, and personalizes student deals — powered by Claude AI</div>
+<div class="hero-meta">
+<div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Product Lead &amp; Co-Creator</div></div>
+<div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">May 2026 · 2 weeks</div></div>
+<div class="meta-item"><div class="meta-label">Platform</div><div class="meta-val">Chrome Extension + Node.js</div></div>
+<div class="meta-item"><div class="meta-label">AI Model</div><div class="meta-val">Claude claude-sonnet-4-20250514</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">The Problem</div>
+<div class="section-title">Students Leave Thousands on the Table</div>
+<div class="body-text">The average college student is eligible for hundreds of dollars in discounts, perks, and referral bonuses every year. Enterprise car rental fee waivers. Free Adobe Creative Cloud through university IT. Wells Fargo $325 checking bonuses. Spotify student plans. But 90% of these benefits go unclaimed — not because they don't exist, but because there's no intelligent system to surface them.</div>
+<div class="body-text">Existing solutions make it worse, not better. Honey applies codes blindly without verifying they work. RetailMeNot shows codes from 2022. UniDays promotes brands that pay for placement, not brands that actually benefit students. There's no platform that's genuinely on the student's side.</div>
+
+<div class="ps-grid">
+<div class="ps-card problem">
+<div class="ps-title">❌ What's broken today</div>
+<div class="ps-item">Dead codes waste students' time — no one removes them</div>
+<div class="ps-item">UniDays is paid by brands, not student-interest aligned</div>
+<div class="ps-item">University-specific perks are invisible — no system to find them</div>
+<div class="ps-item">Manual code discovery requires constant curation</div>
+<div class="ps-item">No context — codes shown for wrong sites, wrong moments</div>
+</div>
+<div class="ps-card solution">
+<div class="ps-title">✅ What Stackd does differently</div>
+<div class="ps-item">Self-cleaning codes — dead codes removed automatically by community</div>
+<div class="ps-item">AI is 100% on the student's side — not paid by brands</div>
+<div class="ps-item">Claude AI discovers university-specific perks nobody knows about</div>
+<div class="ps-item">AI Code Hunter finds real codes every 6 hours autonomously</div>
+<div class="ps-item">Floating widget surfaces deals at exactly the right moment</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">The Product</div>
+<div class="section-title">8 Features. All Live.</div>
+<div class="stat-row">
+<div class="stat-card"><div class="stat-num">5</div><div class="stat-label">AI Features Live</div></div>
+<div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Deal Categories</div></div>
+<div class="stat-card"><div class="stat-num">6hr</div><div class="stat-label">AI Refresh Cycle</div></div>
+<div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Universities Supported</div></div>
+</div>
+
+<div class="feature-grid">
+<div class="feature-card">
+<div class="feature-emoji">✨</div>
+<div class="feature-name">AI Picks for Current Site</div>
+<div class="feature-desc">Open Stackd on doordash.com and Claude AI instantly ranks the most relevant DoorDash codes — with relevance scores and reasons. Context-aware, not generic.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🧬</div>
+<div class="feature-name">Deal DNA</div>
+<div class="feature-desc">Every code has an AI explanation: why the deal exists, hidden catches, best time to use it, how long it typically lasts. Cached in the database — Claude called once per code.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">✅</div>
+<div class="feature-name">Self-Cleaning Codes</div>
+<div class="feature-desc">After copying a code, users see a 30-second delayed prompt: "Did it work?" 3 No votes = auto-removed for everyone. 10 Yes votes = Verified Working badge. The platform gets smarter with every user.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🎓</div>
+<div class="feature-name">University Personalization</div>
+<div class="feature-desc">User sets their university once. Claude AI discovers every perk available to students at that school — from software to banking bonuses to local deals — and refreshes every 7 days.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🤖</div>
+<div class="feature-name">AI Code Hunter</div>
+<div class="feature-desc">A cron job runs every 6 hours. Claude AI searches for real working referral codes across 9 categories and auto-adds them to the database. Zero manual curation needed.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🔍</div>
+<div class="feature-name">AI Smart Search</div>
+<div class="feature-desc">Zero results locally? Claude AI searches the internet in real time for the user's query and returns relevant codes. Results are saved for all future users — community-powered learning.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🏷️</div>
+<div class="feature-name">Floating Widget</div>
+<div class="feature-desc">A content script auto-injects a floating pill on any website where Stackd has deals. Users see "3 deals here" without opening the extension. Dismissible per-domain for 24 hours.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+<div class="feature-card">
+<div class="feature-emoji">🪙</div>
+<div class="feature-name">Coins &amp; Gift Cards</div>
+<div class="feature-desc">Users earn 50 coins per code shared. Redeemable for Amazon, Starbucks, Netflix, Target, Apple, Chipotle gift cards. Full redemption flow with coin balance tracking.</div>
+<div class="feature-badge">✅ Live</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">The AI Layer</div>
+<div class="section-title">Claude Powers 5 Distinct Features</div>
+<div class="body-text">AI wasn't added as a feature — it was integrated as intelligence. Every place Claude appears in Stackd solves a specific product problem that rules or static data couldn't solve. The model is claude-sonnet-4-20250514, called server-side with ANTHROPIC_API_KEY stored securely in Render environment variables.</div>
+
+<div class="ai-grid">
+<div class="ai-card">
+<div class="ai-icon">✨</div>
+<div class="ai-name">Contextual Ranking</div>
+<div class="ai-desc">Given the current domain + all codes in the database, Claude ranks which codes are most relevant and explains why. Not just keyword matching — genuine contextual reasoning.</div>
+</div>
+<div class="ai-card">
+<div class="ai-icon">🧬</div>
+<div class="ai-name">Deal Explanation</div>
+<div class="ai-desc">Claude writes a four-part analysis per code: why it exists, hidden catches, best time to use, and duration. Results cached permanently — API called once, value delivered forever.</div>
+</div>
+<div class="ai-card">
+<div class="ai-icon">🎓</div>
+<div class="ai-name">Perk Discovery</div>
+<div class="ai-desc">Claude discovers all student perks for any university — things students didn't know existed. Unsponsored, unbiased, 100% in the student's interest. Refreshed every 7 days.</div>
+</div>
+<div class="ai-card">
+<div class="ai-icon">🤖</div>
+<div class="ai-name">Autonomous Hunting</div>
+<div class="ai-desc">A cron job triggers Claude every 6 hours to find new real codes across 9 categories. The platform fills itself — no human curation required at any scale.</div>
+</div>
+<div class="ai-card">
+<div class="ai-icon">🔍</div>
+<div class="ai-name">Zero-Result Fallback</div>
+<div class="ai-desc">When local search returns nothing, Claude searches in real time and saves results for all future users. The database compounds — every failed search makes the platform better.</div>
+</div>
+<div class="ai-card">
+<div class="ai-icon">🏗️</div>
+<div class="ai-name">Smart Architecture</div>
+<div class="ai-desc">All 5 AI features share one backend. Deal DNA and perk results are cached in PostgreSQL. Cost stays near zero because Claude is only called when no cached result exists.</div>
+</div>
+</div>
+
+<div class="insight">
+<div class="insight-label">Key Product Insight</div>
+<p>The most important AI decision was <strong>what NOT to use AI for</strong>. Voting, coin tracking, OAuth, and the floating widget are all rule-based — they don't need AI and would be slower and more expensive if they used it. AI is reserved for the tasks where <strong>judgment and real-world knowledge</strong> are actually required: ranking, explaining, discovering, and searching. This distinction is what makes the product fast, affordable, and reliable at scale.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Key Design Decision</div>
+<div class="section-title">Self-Cleaning Codes: The Killer Feature</div>
+<div class="body-text">The single most important product insight behind Stackd: <em>the problem isn't finding coupon codes — it's trusting that they still work.</em></div>
+<div class="body-text">Honey applies every code in sequence and keeps ones that work. That's brute force, not intelligence. RetailMeNot shows codes with no recency signal. The result: users waste time copying codes that expired in 2023.</div>
+<div class="body-text">Self-Cleaning Codes inverts the model. Instead of the platform verifying codes (impossible at scale), the community verifies them through normal use. The 30-second delayed prompt after copying feels natural — not like a survey. Votes are tracked per user to prevent gaming. Three failures auto-remove the code. Ten successes award a Verified badge.</div>
+
+<div class="quote">
+<div class="quote-text">"The platform gets smarter every time someone copies a code — whether it works or not."</div>
+<div class="quote-sub">The compounding loop behind Self-Cleaning Code Intelligence</div>
+</div>
+
+<div class="body-text">This is also the hardest feature to copy. Honey can't add community voting without breaking its auto-apply model. UniDays can't add negative feedback without exposing that sponsored codes don't always work. Stackd's self-cleaning system is both a UX feature and a competitive moat.</div>
+</div>
+
+<div class="section">
+<div class="section-label">Technical Stack</div>
+<div class="section-title">Built &amp; Deployed in 2 Weeks</div>
+
+<div class="tech-row">
+<span class="tech-tag highlight">Claude claude-sonnet-4-20250514</span>
+<span class="tech-tag highlight">Anthropic API</span>
+<span class="tech-tag">Node.js / Express</span>
+<span class="tech-tag">PostgreSQL 18</span>
+<span class="tech-tag">Prisma ORM</span>
+<span class="tech-tag">Google OAuth 2.0</span>
+<span class="tech-tag">JWT Authentication</span>
+<span class="tech-tag">Chrome Extension MV3</span>
+<span class="tech-tag">Content Scripts</span>
+<span class="tech-tag">Service Workers</span>
+<span class="tech-tag">node-cron</span>
+<span class="tech-tag">Render.com</span>
+<span class="tech-tag">GitHub</span>
+</div>
+
+<div class="body-text">The backend runs on Render's free tier with PostgreSQL 18. The extension uses Manifest v3 with a service worker for background tasks and a content script for the floating widget. All AI calls are server-side — the extension never touches the Anthropic API directly, keeping the API key secure.</div>
+
+<div class="insight">
+<div class="insight-label">Architecture Decision: Why Google OAuth instead of .edu email</div>
+<p>The original PRD specified .edu email verification for student authentication. I switched to Google OAuth for three reasons: <strong>zero friction</strong> (one click vs. email verification flow), <strong>inclusivity</strong> (international students often don't have .edu emails), and <strong>reliability</strong> (.edu verification requires a third-party service that adds cost and failure points). The tradeoff is losing guaranteed student verification — mitigated by the university personalization system which requires students to self-identify their school.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Outcomes</div>
+<div class="section-title">What Was Shipped</div>
+<div class="outcome-list">
+<div class="outcome-item">
+<div class="outcome-num">01</div>
+<div class="outcome-content">
+<div class="outcome-title">Full-stack Chrome extension deployed to production</div>
+<div class="outcome-desc">Backend on Render with PostgreSQL, Google OAuth, JWT auth, and 18 API endpoints. Extension submitted to Chrome Web Store May 2026.</div>
+</div>
+</div>
+<div class="outcome-item">
+<div class="outcome-num">02</div>
+<div class="outcome-content">
+<div class="outcome-title">5 distinct AI integrations using Claude API</div>
+<div class="outcome-desc">Context-aware code ranking, Deal DNA generation, university perk discovery, autonomous code hunting, and AI-powered search fallback — all production-ready.</div>
+</div>
+</div>
+<div class="outcome-item">
+<div class="outcome-num">03</div>
+<div class="outcome-content">
+<div class="outcome-title">Self-cleaning code verification system</div>
+<div class="outcome-desc">Community voting with per-user tracking, auto-removal at 3 failures, verified badges at 10 confirmations. Solves the #1 pain point of every competitor.</div>
+</div>
+</div>
+<div class="outcome-item">
+<div class="outcome-num">04</div>
+<div class="outcome-content">
+<div class="outcome-title">University personalization for 500+ schools</div>
+<div class="outcome-desc">AI-powered perk discovery on signup, community-sourced additions, 7-day auto-refresh. Built an entirely new product category: the unbiased student benefits finder.</div>
+</div>
+</div>
+<div class="outcome-item">
+<div class="outcome-num">05</div>
+<div class="outcome-content">
+<div class="outcome-title">Autonomous content pipeline</div>
+<div class="outcome-desc">AI Code Hunter runs every 6 hours across 9 categories. The platform generates its own content — zero manual curation required to maintain supply.</div>
+</div>
+</div>
+</div>
+
+<div class="link-row">
+<a href="https://github.com/SmokeBuster/stackd-extension" class="link-btn link-secondary">GitHub Repo →</a>
+<a href="https://stackd-extension-1.onrender.com/health" class="link-btn link-secondary">Live Backend →</a>
+</div>
+</div>
+
+<div class="footer">
+<div class="footer-name">Parth Chavan</div>
+<div class="footer-links">
+<a href="https://parth14chavan.netlify.app" class="footer-link">Portfolio</a>
+<a href="https://github.com/SmokeBuster" class="footer-link">GitHub</a>
+</div>
+</div>
+
+</div></body></html>
