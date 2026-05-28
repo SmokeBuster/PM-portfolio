@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Zomato PRD - Parth Chavan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F2EB;--ink:#0F0F0F;--muted:#6B6760;--accent:#C8391B;
+  --card:#EDEBE4;--border:#D8D4CB;--white:#FFFFFF;--navy:#0B0F1A;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3rem;background:rgba(245,242,235,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.06em;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
+footer span{font-size:0.78rem;color:rgba(245,242,235,0.25);letter-spacing:0.04em}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}footer{flex-direction:column;gap:0.5rem;text-align:center}}
+
+section{padding:5rem 3rem}
+.inner{max-width:900px;margin:0 auto}
+.overline{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#E23744;margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem}
+.overline::before{content:'';width:20px;height:1.5px;background:#E23744}
+.case-hero{min-height:70vh;background:#1A0A0D;display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 3rem 4rem;position:relative;overflow:hidden}
+.case-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(226,55,68,0.2),transparent 60%)}
+.back-link{position:absolute;top:7rem;left:3rem;display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:rgba(245,242,235,0.4);font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;z-index:2}
+.back-link:hover{color:var(--bg)}
+.hero-inner{position:relative;z-index:2}
+.case-tag{display:inline-block;background:#E23744;color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:3px;margin-bottom:1.5rem}
+.case-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,7rem);color:var(--bg);line-height:0.9;letter-spacing:0.02em;margin-bottom:1.5rem}
+.case-hero-title span{color:#E23744}
+.case-meta{display:flex;flex-wrap:wrap;gap:2rem}
+.meta-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(245,242,235,0.35)}
+.meta-val{font-size:0.9rem;color:var(--bg);font-weight:500}
+.stat-strip{background:#E23744;padding:2rem 3rem}
+.stat-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.stat-val{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#fff;line-height:1}
+.stat-lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.7)}
+.cs-section{background:var(--white)}
+.cs-section.alt{background:var(--bg)}
+.cs-section.dark{background:#1A0A0D}
+h2.sec-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--ink);letter-spacing:0.03em;margin-bottom:1.5rem}
+h2.sec-title.light{color:var(--bg)}
+.body-text{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:1.2rem}
+.body-text strong{color:var(--ink);font-weight:500}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.prob-card{background:var(--bg);border:1px solid var(--border);border-top:3px solid #E23744;padding:1.5rem}
+.prob-icon{font-size:1.5rem;margin-bottom:0.8rem}
+.prob-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--ink);letter-spacing:0.03em;margin-bottom:0.5rem}
+.prob-desc{font-size:0.88rem;color:var(--muted);font-weight:300;line-height:1.7}
+/* PERSONA */
+.persona-grid{display:grid;grid-template-columns:auto 1fr 1fr;gap:2rem;align-items:start;padding:2rem;background:var(--card);border:1px solid var(--border);border-left:3px solid #E23744;margin-top:2rem}
+.persona-avatar{width:60px;height:60px;border-radius:50%;background:#E23744;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.persona-name{font-weight:600;color:var(--ink);font-size:1rem;margin-bottom:0.3rem}
+.persona-role{font-size:0.83rem;color:var(--muted);font-weight:300}
+.persona-col h4{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#E23744;margin-bottom:0.6rem}
+.persona-col li{font-size:0.85rem;color:var(--muted);font-weight:300;margin-bottom:0.3rem;list-style:none;display:flex;align-items:flex-start;gap:0.5rem}
+.persona-col li::before{content:'';width:4px;height:4px;background:#E23744;border-radius:50%;flex-shrink:0;margin-top:0.5rem}
+/* SOLUTIONS */
+.sol-list{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.sol-item{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:start;padding:1.5rem;background:rgba(226,55,68,0.04);border:1px solid rgba(226,55,68,0.12);border-left:3px solid #E23744}
+.sol-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(226,55,68,0.3);line-height:1}
+.sol-title{font-weight:600;color:var(--ink);font-size:0.95rem;margin-bottom:0.3rem}
+.sol-desc{font-size:0.88rem;color:var(--muted);font-weight:300;line-height:1.7}
+.sol-badge{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;white-space:nowrap}
+.top{background:#E23744;color:#fff}
+.high{background:rgba(226,55,68,0.1);color:#E23744}
+.med{background:rgba(0,0,0,0.05);color:var(--muted)}
+.metrics-table{width:100%;border-collapse:collapse;margin-top:2rem}
+.metrics-table th{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E23744;padding:0.8rem 1rem;border-bottom:1px solid var(--border);text-align:left}
+.metrics-table td{padding:0.9rem 1rem;border-bottom:1px solid var(--border);font-size:0.9rem;color:var(--muted);font-weight:300}
+.metrics-table .ns{font-weight:600;color:var(--ink)}
+.arrow-up{color:#22C55E;font-size:1.1rem}
+.arrow-down{color:#E23744;font-size:1.1rem}
+.rice-table{width:100%;border-collapse:collapse;margin-top:2rem}
+.rice-table th{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,242,235,0.4);padding:0.8rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);text-align:center}
+.rice-table th:first-child{text-align:left}
+.rice-table td{padding:0.9rem 1rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem;color:rgba(245,242,235,0.5);text-align:center}
+.rice-table td:first-child{text-align:left;color:var(--bg);font-weight:500}
+.rice-score{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#E23744}
+.case-nav{background:#1A0A0D;padding:3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.06)}
+.case-nav-link{text-decoration:none;display:flex;flex-direction:column;gap:0.3rem}
+.case-nav-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(245,242,235,0.3)}
+.case-nav-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--bg);letter-spacing:0.03em;transition:color 0.2s}
+.case-nav-link:hover .case-nav-title{color:#E23744}
+@media(max-width:768px){.stat-inner,.prob-grid{grid-template-columns:1fr}.persona-grid{grid-template-columns:1fr}.sol-item{grid-template-columns:auto 1fr}.sol-badge{display:none}.case-nav{flex-direction:column;gap:2rem;text-align:center}section{padding:3rem 1.5rem}.case-hero{padding:8rem 1.5rem 3rem}.back-link{left:1.5rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">PARTH CHAVAN</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#prd">PRDs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="case-hero">
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+  <div class="hero-inner">
+    <div class="case-tag">Concept PRD · Self-Initiated</div>
+    <div class="case-hero-title">ZOMATO<br/><span>TEXT REVIEWS</span></div>
+    <div class="case-meta">
+      <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Product Case Study</div></div>
+      <div class="meta-item"><div class="meta-label">Company</div><div class="meta-val">Zomato (Self-Initiated)</div></div>
+      <div class="meta-item"><div class="meta-label">Focus</div><div class="meta-val">User Engagement</div></div>
+      <div class="meta-item"><div class="meta-label">Deliverables</div><div class="meta-val">PRD, Wireframes, System Design</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-inner">
+    <div class="stat-item"><div class="stat-val">55%</div><div class="stat-lbl">Users Forget to Review</div></div>
+    <div class="stat-item"><div class="stat-val">5</div><div class="stat-lbl">Solutions Proposed</div></div>
+    <div class="stat-item"><div class="stat-val">4</div><div class="stat-lbl">Success Metrics Defined</div></div>
+    <div class="stat-item"><div class="stat-val">RICE</div><div class="stat-lbl">Prioritization Framework</div></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="cs-section"><div class="inner">
+  <div class="overline reveal">01 - Problem Statement</div>
+  <h2 class="sec-title reveal">The Problem</h2>
+  <p class="body-text reveal">Customers, typically <strong>office employees in Tier 1 cities</strong> with high order frequency, forget to leave a review after delivery. Company reports show a <strong>decline in YoY growth rate</strong> of monthly transacting users, indicating potential improvement in user engagement.</p>
+  <p class="body-text reveal">Nudging users to review would lead to higher user-generated content, increasing customer trust and retention, ultimately boosting average number of orders and revenue.</p>
+  <div class="prob-grid reveal">
+    <div class="prob-card"><div class="prob-icon">📉</div><div class="prob-title">Declining Engagement</div><p class="prob-desc">App opening rate drops significantly after order delivery. Users don't return to the app to review once food is received.</p></div>
+    <div class="prob-card"><div class="prob-icon">🔕</div><div class="prob-title">Lack of Prompts</div><p class="prob-desc">55% of users surveyed cited lack of prompts as the main reason for not reviewing - they simply forgot.</p></div>
+  </div>
+</div></section>
+
+<!-- USER PERSONA -->
+<section class="cs-section alt"><div class="inner">
+  <div class="overline reveal">02 - User Research</div>
+  <h2 class="sec-title reveal">Who We're Designing For</h2>
+  <p class="body-text reveal">Target segment: <strong>Ages 18-30</strong>, tech-savvy, living in Tier 1 cities, high order frequency, busy professional schedule.</p>
+  <div class="persona-grid reveal">
+    <div class="persona-avatar">👩</div>
+    <div><div class="persona-name">Asha, 21, Delhi</div><div class="persona-role">Senior Developer, IBM · 3 orders weekly</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+      <div class="persona-col"><h4>Needs</h4><ul><li>Contribute to community through genuine reviews</li><li>Simple and memorable review experience</li></ul></div>
+      <div class="persona-col"><h4>Pain Points</h4><ul><li>Lack of nudges and reminders to submit reviews</li><li>Review process not intuitive enough to remember</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- SOLUTIONS -->
+<section class="cs-section"><div class="inner">
+  <div class="overline reveal">03 - Proposed Solutions</div>
+  <h2 class="sec-title reveal">How to Fix It</h2>
+  <div class="sol-list reveal">
+    <div class="sol-item"><div class="sol-num">01</div><div><div class="sol-title">Push Notifications and Email Reminders</div><p class="sol-desc">Send timely reminders through existing push notification and email infrastructure within a 24-hour target window after order delivery.</p></div><span class="sol-badge top">Top Priority</span></div>
+    <div class="sol-item"><div class="sol-num">02</div><div><div class="sol-title">In-App Prompts</div><p class="sol-desc">Whenever a user opens the app, prompt them about reviewing their last order through contextually placed banners and pop-ups.</p></div><span class="sol-badge top">Top Priority</span></div>
+    <div class="sol-item"><div class="sol-num">03</div><div><div class="sol-title">Review Prompts in Receipts</div><p class="sol-desc">Add review option in the invoice and delivery receipt, as users are more likely to open these to verify their order post-delivery.</p></div><span class="sol-badge high">High Priority</span></div>
+    <div class="sol-item"><div class="sol-num">04</div><div><div class="sol-title">Streak Points and Leaderboard</div><p class="sol-desc">Gamify the review process by giving users points and maintaining streaks. Create a public leaderboard for community experience.</p></div><span class="sol-badge med">Medium Priority</span></div>
+    <div class="sol-item"><div class="sol-num">05</div><div><div class="sol-title">Highlight the Impact of Reviews</div><p class="sol-desc">Remind users of the importance of their contribution to foster a sense of responsibility and community.</p></div><span class="sol-badge med">Medium Priority</span></div>
+  </div>
+</div></section>
+
+<!-- RICE -->
+<section class="cs-section dark"><div class="inner">
+  <div class="overline reveal" style="color:#E23744">04 - Prioritization</div>
+  <h2 class="sec-title light reveal">RICE Scoring</h2>
+  <table class="rice-table reveal">
+    <thead><tr><th>Solution</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>Push Notifications & Emails</td><td>8</td><td>6</td><td>6</td><td>3</td><td><span class="rice-score">96</span></td></tr>
+      <tr><td>In-App Prompts</td><td>9</td><td>5</td><td>7</td><td>4</td><td><span class="rice-score">78</span></td></tr>
+      <tr><td>Review via Receipts</td><td>6</td><td>7</td><td>4</td><td>5</td><td><span class="rice-score">33</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.82rem;color:rgba(245,242,235,0.3);margin-top:0.8rem;font-style:italic">RICE Score = (Reach x Impact x Confidence) / Effort</p>
+</div></section>
+
+<!-- METRICS -->
+<section class="cs-section"><div class="inner">
+  <div class="overline reveal">05 - Success Metrics</div>
+  <h2 class="sec-title reveal">How We Measure Success</h2>
+  <table class="metrics-table reveal">
+    <thead><tr><th>Level</th><th>Metric</th><th>Event</th><th>Direction</th></tr></thead>
+    <tbody>
+      <tr><td class="ns">North Star</td><td class="ns">Number of text reviews submitted</td><td>Review submitted</td><td><span class="arrow-up">▲</span></td></tr>
+      <tr><td>L1</td><td>User traffic on review submission page</td><td>Review form opened</td><td><span class="arrow-up">▲</span></td></tr>
+      <tr><td>L2</td><td>CTR on notifications and in-app banners</td><td>Tapped on notification</td><td><span class="arrow-up">▲</span></td></tr>
+      <tr><td>L3</td><td>Notifications opt-out rate</td><td>Disabled reminders</td><td><span class="arrow-down">▼</span></td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- KEY LEARNINGS -->
+<section class="cs-section alt"><div class="inner">
+  <div class="overline reveal">06 - Key Learnings</div>
+  <h2 class="sec-title reveal">What I Learned</h2>
+  <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem" class="reveal">
+    <div style="padding:1.5rem;border-left:3px solid #E23744;background:var(--white)"><strong style="color:var(--ink)">User research validates everything.</strong> <span style="color:var(--muted);font-weight:300">The survey data made the problem undeniable. 55% citing lack of prompts was the clear signal to act on notification strategy first.</span></div>
+    <div style="padding:1.5rem;border-left:3px solid #E23744;background:var(--white)"><strong style="color:var(--ink)">RICE scoring removes subjectivity.</strong> <span style="color:var(--muted);font-weight:300">Push notifications scored 96 vs in-app prompts at 78, largely because of lower effort. That data point drives prioritization clearly.</span></div>
+    <div style="padding:1.5rem;border-left:3px solid #E23744;background:var(--white)"><strong style="color:var(--ink)">Notification fatigue is a real risk.</strong> <span style="color:var(--muted);font-weight:300">The biggest trade-off: too many reminders could hurt long-term engagement. Throttling and user preferences are essential from day one.</span></div>
+  </div>
+</div></section>
+
+<!-- CASE NAV -->
+<div class="case-nav">
+  <a href="oxanto.html" class="case-nav-link"><span class="case-nav-label">← Previous</span><span class="case-nav-title">Oxanto PRD</span></a>
+  <a href="index.html#prd" class="case-nav-link" style="text-align:right"><span class="case-nav-label">Back to →</span><span class="case-nav-title">All PRDs</span></a>
+</div>
+
+<footer>
+  <span>© 2025 Parth Chavan</span>
+  <span>USC MS ENGINEERING MANAGEMENT · LOS ANGELES</span>
+</footer>
+<script>
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>
